@@ -9,13 +9,14 @@ module.exports = merge(common('development'), {
   mode: "development",
   devtool: "eval-source-map",
   devServer: {
-    contentBase: "./dist",
+    static: {
+      directory: path.join(__dirname, 'dist')
+    },
     host: HOST,
+    hot: true,
     port: PORT,
     compress: true,
-    inline: true,
     historyApiFallback: true,
-    overlay: true,
     open: true
   },
   module: {

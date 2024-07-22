@@ -8,13 +8,14 @@ interface LivenessResponse {
 }
 
 const API = getRESTClient(ServiceName.PARKS_BACKEND);
+console.log(API);
 
 function kafkaStreamsIsReady(data: LivenessResponse) {
     return data.status === "UP";
 }
 
 async function isAppReady() {
-    const response = await API.url("q/health/live")
+    const response = await API.url("/q/health/live")
         .get().json<LivenessResponse>()
         .catch(error => {
             console.log(error);

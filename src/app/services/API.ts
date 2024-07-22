@@ -7,12 +7,10 @@ export enum ServiceName {
 
 //These environment variables are only evaluated/available at build time
 const serviceUrlMap: { [key in ServiceName]: string } = {
-    //[ServiceName.PARKS_BACKEND]: "https://parks-app-park-app-gitops-a-xylem-project.apps.cluster-d6mkj.sandbox240.opentlc.com/",
-    [ServiceName.PARKS_BACKEND]: process.env.PARKS_ENDPOINT /*?? "http://localhost:8080/"*/,
-    // [ServiceName.WEATHER_BACKEND]: "https://parks-weather-git-a-xylem-project.apps.cluster-d6mkj.sandbox240.opentlc.com/",
-    [ServiceName.WEATHER_BACKEND]: process.env.WEATHER_ENDPOINT /*?? "http://localhost:8090/"*/,
+    [ServiceName.PARKS_BACKEND]: process.env.PARKS_ENDPOINT ?? "http://localhost:8080/",
+    [ServiceName.WEATHER_BACKEND]: process.env.WEATHER_ENDPOINT ?? "http://localhost:8090/",
 };
-console.log(process.env)
+
 console.log("Backend URL:", serviceUrlMap);
 
 
