@@ -5,7 +5,7 @@ import { getToken } from "./AuthService";
 const API = getRESTClient(ServiceName.PARKS_BACKEND);
 
 export function all(): Promise<Park[]> {
-    return API.url("parks")
+    return API.url("/parks")
         .get()
         .json<Park[]>();
 }
@@ -19,13 +19,13 @@ export function close(park: Park): Promise<void> {
 }
 
 export function checkWeather(park: Park): Promise<void> {
-    return API.url(`parks/${park.id}/weathercheck`)
+    return API.url(`/parks/${park.id}/weathercheck`)
         .post()
         .text();
 }
 
 export function update(park: Park): Promise<void> {
-    return API.url("parks")
+    return API.url("/parks")
         .auth(`Bearer ${getToken()}`)
         .put(park)
         .unauthorized(error => {
