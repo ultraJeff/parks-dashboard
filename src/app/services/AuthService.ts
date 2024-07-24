@@ -1,10 +1,9 @@
-import * as jose from 'jose'
+// import * as jose from 'jose'
 import { getRESTClient, ServiceName } from "./API";
 
 const API = getRESTClient(ServiceName.PARKS_BACKEND);
 
 export async function login(username: string, password: string): Promise<boolean> {
-    return false;
 
     const token = await API.url("/auth/login")
         .post({ username, password })
@@ -26,8 +25,7 @@ interface UserResponse {
 }
 
 export async function getUsername(): Promise<string | null> {
-    return '';
-    
+
     const user = await API.url("/auth/user")
         .auth(`Bearer ${getToken()}`)
         .get()

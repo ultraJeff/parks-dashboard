@@ -18,7 +18,10 @@ async function isAppReady() {
         .get().json<LivenessResponse>()
         .catch(error => {
             console.log({error: error});
-            return { checks: [] };
+            return { 
+                status: "Unknown",
+                checks: []
+            };
         });
 
     return kafkaStreamsIsReady(response);

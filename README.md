@@ -1,13 +1,17 @@
 # Parks Dashboard
 
-This is a React front-end app for the smart parks application of the DO378 comprehensive review.
+This is a React front-end app for the "Smart Parks" application of the DO378 comprehensive review.
 
-Because students might not have Node.js installed, we need to provide them with the _built_ web application (the `dist` directory).
+Run `npm run build` before running `npm start` to generate the `dist` folder.
 
-Run `npm run build` before pushing changes to generate the `dist` folder.
-This folder is included in the repository.
+`npm start` will use `process.env.PARKS_ENDPOINT` and `process.env.WEATHER_ENDPOINT` for the Express server proxy. This allows you to either run the parks-app and parks-weather apps locally or on a remote server (such as an OpenShift service/route) using the same technique. Ensure you have a `.env` file in your local repository or otherwise have these variables accessible to this application.
 
-When performing the comprehensive review lab, students can serve the application by running `python serve.py` (no Node.js needed).
+Example `.env` file (these endpoints will not work for you)
+
+```sh
+PARKS_ENDPOINT = https://parks-app-park-app-gitops-a-project.apps.rgtww.dynamic.redhatworkshops.io
+WEATHER_ENDPOINT = https://parks-weather-a-project.apps.rgtww.dynamic.redhatworkshops.io
+```
 
 ## Development scripts
 ```sh
