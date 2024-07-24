@@ -5,14 +5,14 @@ const API = getRESTClient(ServiceName.WEATHER_BACKEND);
 
 
 export function all(): Promise<WeatherWarning[]> {
-    return API.url("warnings")
+    return API.url("/warnings")
         .get()
         .json<WeatherWarning[]>();
 }
 
 
 export function simulateWarnings(): Promise<void> {
-    return API.url("warnings/simulation")
+    return API.url("/warnings/simulation")
         .post()
         .text();
 }

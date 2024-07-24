@@ -4,8 +4,9 @@ import { getRESTClient, ServiceName } from "./API";
 const API = getRESTClient(ServiceName.PARKS_BACKEND);
 
 export async function login(username: string, password: string): Promise<boolean> {
+    return false;
 
-    const token = await API.url("auth/login")
+    const token = await API.url("/auth/login")
         .post({ username, password })
         .unauthorized(error => {
             throw new Error(`Invalid credentials. Response ${error.response.status} ${error.response.statusText}`);
@@ -25,7 +26,9 @@ interface UserResponse {
 }
 
 export async function getUsername(): Promise<string | null> {
-    const user = await API.url("auth/user")
+    return '';
+    
+    const user = await API.url("/auth/user")
         .auth(`Bearer ${getToken()}`)
         .get()
         .unauthorized(() => {

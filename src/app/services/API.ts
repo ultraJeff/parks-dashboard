@@ -7,17 +7,13 @@ export enum ServiceName {
 
 //These environment variables are only evaluated/available at build time
 const serviceUrlMap: { [key in ServiceName]: string } = {
-    [ServiceName.PARKS_BACKEND]: process.env.PARKS_ENDPOINT ?? "http://localhost:8080/",
-    [ServiceName.WEATHER_BACKEND]: process.env.WEATHER_ENDPOINT ?? "http://localhost:8090/",
+    [ServiceName.PARKS_BACKEND]: "/parks",
+    [ServiceName.WEATHER_BACKEND]: "/weather",
 };
-
-console.log("Backend URL:", serviceUrlMap);
-
 
 export function getRESTClient(serviceName: ServiceName) {
     return wretch(serviceUrlMap[serviceName]);
 }
-
 
 export function getSSEClient(serviceName: ServiceName) {
 
